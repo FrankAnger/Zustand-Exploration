@@ -17,12 +17,13 @@ export const Input = () => {
 	}
 
 	const { data, isLoading } = useQuery({ queryKey: ['mock'], queryFn: fetchMock })
+
 	const options = useMemo<IOption[]>(() => {
 		if (data) {
 			return data.map((el) => ({...el, label: el.name}))
 		}
 		else return []
-	}, [])
+	}, [data])
 
 	return (
 		<div className="wrapper">
